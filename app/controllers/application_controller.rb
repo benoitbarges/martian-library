@@ -5,5 +5,6 @@ class ApplicationController < ActionController::Base
     token = request.headers['Authorization'].to_s
     email = Base64.decode64(token)
     User.find_by(email: email)
+    # User.last
   end
 end

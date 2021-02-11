@@ -7,13 +7,14 @@ class GraphqlController < ApplicationController
   def execute
     result = MartianLibrarySchema.execute(
       params[:query],
-      variables: ensure_hash(params[:variables]),
+      variables: params[:variables],
       # Only this line has chagned
       context: { current_user: current_user },
       operation_name: params[:operationName]
     )
     render json: result
   end
+
 
   private
 
